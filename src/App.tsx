@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 import AuthPage from './pages/auth';
@@ -12,6 +12,7 @@ function App() {
       <AuthProvider>
         <AppProvider>
           <Routes>
+            <Route path="/" element={<Navigate to="/authenticate" />} />
             <Route path="/authenticate/:refCode?" element={<AuthPage />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
