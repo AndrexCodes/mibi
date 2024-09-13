@@ -20,7 +20,7 @@ const AuthPage = () => {
             setTab(tab === 0 ? 1 : 0)
         }, 6000)
         return clearInterval(unsubscribe)
-    }, [])
+    })
     useEffect(() => {
         if (pathname.startsWith("/authenticate") && user) {
             navigate("/dashboard")

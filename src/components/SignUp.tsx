@@ -1,13 +1,13 @@
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import GoogleButton from "./GoogleButton"
-import { AUTH, useAuthContext } from "./firebase_context";
+import { AUTH } from "./firebase_context";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAppContext } from "./app_context";
 
 const SignUp = ({ setPage }: any) => {
     const { setToast } = useAppContext()
-    const [isPassword, setIsPassword] = useState(true)
+    const [isPassword] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
     const [formData, setFormData] = useState({ username: "", email: "", password: "", password_confirm: "" })
     const onSubmit = (event: any) => {

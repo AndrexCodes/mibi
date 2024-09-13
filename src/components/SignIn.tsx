@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import GoogleButton from "./GoogleButton"
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { AUTH, useAuthContext } from "./firebase_context";
-import { useState, useEffect } from "react";
+import { AUTH } from "./firebase_context";
+import { useState } from "react";
 import { useAppContext } from "./app_context";
 
 const SignIn = ({ setPage }: any) => {

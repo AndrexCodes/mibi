@@ -1,6 +1,6 @@
-import { useContext, createContext, useState, useCallback, useEffect } from "react";
+import { useContext, createContext, useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { updateDoc, doc, getDoc, getFirestore, setDoc, arrayUnion } from "firebase/firestore"
 
 const firebaseConfig = {
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }: any) => {
             // alert(err)
         }
     }
-    const initializeApp = useCallback(async () => {
+    const initializeApp = async () => {
         const unsubscribe = onAuthStateChanged(AUTH, async (result) => {
             if (!result) return
             const docRef = doc(DB, "users", result.uid)
@@ -67,7 +67,7 @@ const AuthProvider = ({ children }: any) => {
             }
         })
         return () => unsubscribe()
-    }, [])
+    }
     useEffect(() => {
         initializeApp()
     }, [])
